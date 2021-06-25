@@ -17,7 +17,7 @@ RM = rm -rf
 
 all : $(NAME)
 
-$(NAME) : $(LFT_DIR)
+$(NAME) : $(LFT_DIR) ./$(NAME)
 	@cd $(LFT_DIR) && $(MAKE) all && mv libft.a ../
 	$(CC)  $(LFT_FLAGS) -o $(NAME) $(PS_FILES) 
 

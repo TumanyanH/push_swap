@@ -2,6 +2,7 @@
 # define PUSH_SWAP_H_
 
 # include <stdlib.h>
+# include <stdio.h>
 # include "./libft/libft.h"
 
 typedef struct s_stack

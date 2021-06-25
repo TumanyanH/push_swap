@@ -31,7 +31,7 @@ int check_all_num(t_stack stack, char *arg)
     i = 0;
     while (arg[i])
     {
-        if (!ft_isdigit(arg[i]) || arg[i] != ' ')
+        if (arg[i] != ' ' && !ft_isdigit(arg[i]))
             error("1Error, non-digits detected");
         while (arg[i] && ft_isdigit(arg[i]))
         {
@@ -39,7 +39,8 @@ int check_all_num(t_stack stack, char *arg)
             ++i;
         }
         stack.next = addToList(stack, num);
-        i++;
+        if (arg[i])
+            i++;
     }
     return (1);
 }
@@ -69,5 +70,11 @@ int check_args(char argc, char **args)
         check_all_num_2d(stack_a, args);
     else if (argc)
         error("No any digits.");
+
+    // while (stack_a != NULL)
+    // {
+    //     printf("%d\n", stack_a.num);
+    //     stack_a = *stack_a.next;
+    // }
     return (0);
 }
