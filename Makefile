@@ -30,3 +30,9 @@ fclean :
 	$(RM) ./$(NAME)
 
 re : fclean all
+
+push : 
+	$(MAKE) fclean
+	git add .
+	git commit -m "some message"
+	git push
