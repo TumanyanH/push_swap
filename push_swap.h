@@ -11,10 +11,15 @@ typedef struct s_stack
     struct s_stack *next;
 } t_stack;
 
-int check_all_num(t_stack stack, char *arg);
-int check_all_num_2d(t_stack stack, char **arg);
-int check_args(char argc, char **args);
-int error(char *text);
+typedef struct s_stacks {
+    int *stack_a;
+    int *stack_b;
+} t_stacks;
+
+int check_all_num(int *args_count, char *arg);
+int check_all_num_2d(int *args_count, char **arg);
+int check_args(int *args_count, char argc, char **args);
+int ft_error(char *text);
 void ft_putstr(char *str);
 t_stack *addToList(t_stack last, int new_num);
 

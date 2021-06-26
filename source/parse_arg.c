@@ -4,7 +4,7 @@ int is_digit_string(char *num)
 {
     while (*num)
     {
-        if (!ft_isdigit(*num) || *num == ' ')
+        if (!ft_isdigit(*num) && *num != ' ' && *num != '-')
             return (0);
         ++num;
     }
@@ -23,7 +23,7 @@ int to_space_atoi(char *string)
     return (num);
 }
 
-int check_all_num(t_stack stack, char *arg)
+int check_all_num(int *args_count, char *arg)
 {
     int i;
     int num = 0;
@@ -31,21 +31,22 @@ int check_all_num(t_stack stack, char *arg)
     i = 0;
     while (arg[i])
     {
-        if (arg[i] != ' ' && !ft_isdigit(arg[i]))
-            error("1Error, non-digits detected");
+        if (arg[i] != ' ' && !ft_isdigit(arg[i]) && arg[i] != '-')
+            ft_error("Error, non-digits detected");
         while (arg[i] && ft_isdigit(arg[i]))
         {
             num += ((arg[i + 1] == ' ') ? 1 : 10) * (arg[i] - '0');
             ++i;
         }
-        stack.next = addToList(stack, num);
+        
+        // stack->next = addToList(*stack, num);
         if (arg[i])
             i++;
     }
     return (1);
 }
 
-int check_all_num_2d(t_stack stack, char **arg)
+int check_all_num_2d(int *args_count, char **arg)
 {
     int i;
 
@@ -53,23 +54,22 @@ int check_all_num_2d(t_stack stack, char **arg)
     while (arg[i])
     {
         if (!is_digit_string(arg[i]))
-            error("Error, non-digits detected");
-        stack.next = addToList(stack, ft_atoi(arg[i]));
+            ft_error("Error, non-digits detected");
+        // stack->next = addToList(*stack, ft_atoi(arg[i]));
         i++;
     }
     return (1);
 }
 
-int check_args(char argc, char **args)
+int check_args(int *args_count, char argc, char **args)
 {
-    t_stack stack_a;
 
     if (argc == 2)
-        check_all_num(stack_a, args[1]);
+        check_all_num(args_count, args[1]);
     else if (argc >= 2)
-        check_all_num_2d(stack_a, args);
+        check_all_num_2d(args_count, args);
     else if (argc)
-        error("No any digits.");
+        ft_error("No any digits.");
 
     // while (stack_a != NULL)
     // {
