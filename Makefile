@@ -7,6 +7,7 @@ CC = gcc
 CC_FLAGS = -Wall -Wextra -Werror
 PS_FILES = main.c \
 			source/parse_arg.c \
+			source/parse_arg2.c \
 			source/step_actions.c \
 			source/error.c \
 			source/utils.c \

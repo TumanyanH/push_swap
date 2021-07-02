@@ -5,6 +5,8 @@
 # include <stdio.h>
 # include "./libft/libft.h"
 
+# define CHECK_ALLOWED_CHARS(c) (c != ' ' && !ft_isdigit(c) && c != '-')
+
 typedef struct s_stack
 {
     int num;
@@ -22,6 +24,6 @@ int check_args(int *args_count, char argc, char **args);
 int ft_error(char *text);
 void ft_putstr(char *str);
 t_stack *addToList(t_stack last, int new_num);
-
+void fill_stacks(t_stacks *stacks, int pt, int ac, char **argv);
 
 #endif

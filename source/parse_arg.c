@@ -4,7 +4,7 @@ int is_digit_string(char *num)
 {
     while (*num)
     {
-        if (!ft_isdigit(*num) && *num != ' ' && *num != '-')
+        if (CHECK_ALLOWED_CHARS(*num))
             return (0);
         ++num;
     }
@@ -23,6 +23,7 @@ int to_space_atoi(char *string)
     return (num);
 }
 
+// "1 2 3"
 int check_all_num(int *args_count, char *arg)
 {
     int i;
@@ -31,21 +32,24 @@ int check_all_num(int *args_count, char *arg)
     i = 0;
     while (arg[i])
     {
-        if (arg[i] != ' ' && !ft_isdigit(arg[i]) && arg[i] != '-')
+        if (CHECK_ALLOWED_CHARS(arg[i]))
             ft_error("Error, non-digits detected");
         while (arg[i] && ft_isdigit(arg[i]))
         {
             num += ((arg[i + 1] == ' ') ? 1 : 10) * (arg[i] - '0');
+            (*args_count)++;
             ++i;
         }
         
-        // stack->next = addToList(*stack, num);
-        if (arg[i])
+        if (CHECK_ALLOWED_CHARS(arg[i]) && arg[i])
+            ft_error("Error, non-digits detected");
+        else if (arg[i])
             i++;
     }
     return (1);
 }
 
+// 1 2 3
 int check_all_num_2d(int *args_count, char **arg)
 {
     int i;
@@ -55,26 +59,22 @@ int check_all_num_2d(int *args_count, char **arg)
     {
         if (!is_digit_string(arg[i]))
             ft_error("Error, non-digits detected");
-        // stack->next = addToList(*stack, ft_atoi(arg[i]));
+        (*args_count)++;
         i++;
     }
-    return (1);
+    return (2);
 }
 
 int check_args(int *args_count, char argc, char **args)
 {
+    int ret;
 
+    ret = 0;
     if (argc == 2)
-        check_all_num(args_count, args[1]);
+        ret = check_all_num(&(*args_count), args[1]);
     else if (argc >= 2)
-        check_all_num_2d(args_count, args);
+        ret = check_all_num_2d(&(*args_count), args);
     else if (argc)
         ft_error("No any digits.");
-
-    // while (stack_a != NULL)
-    // {
-    //     printf("%d\n", stack_a.num);
-    //     stack_a = *stack_a.next;
-    // }
-    return (0);
+    return (ret);
 }
