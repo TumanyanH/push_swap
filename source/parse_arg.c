@@ -72,7 +72,7 @@ int check_args(int *args_count, char argc, char **args)
     ret = 0;
     if (argc == 2)
         ret = check_all_num(&(*args_count), args[1]);
-    else if (argc >= 2)
+    else if (argc > 2)
         ret = check_all_num_2d(&(*args_count), args);
     else if (argc)
         ft_error("No any digits.");
