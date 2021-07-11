@@ -26,4 +26,15 @@ void 		ft_putstr(char *str);
 t_stack 	*addToList(t_stack last, int new_num);
 void 		fill_stacks(t_stacks *stacks, int pt, int ac, char **argv);
 
+
+void printf_stacks(t_stacks stacks, int args_count);
+void shift_up(int *stack, int args_count);
+void shift_down(int *stack, int args_count);
+
+// actions 
+void swap(int *stack);
+void push(char stack, t_stacks *stacks, int ac);
+void rotate(int *stack, int ac);
+
+
 #endif
