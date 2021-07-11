@@ -31,3 +31,8 @@ void rotate(int *stack, int ac)
     shift_up(stack, ac);
     stack[ac - 1] = temp;
 }
+
+void reverse_rotate(int *stack, int ac)
+{
+
+}
