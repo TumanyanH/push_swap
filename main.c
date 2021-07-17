@@ -3,19 +3,22 @@
 int main(int argc, char **argv)
 {
     t_stacks stacks;
-    int args_count;
     int parse_type;
-    args_count = 0;
-    parse_type = check_args(&args_count, argc, argv);
 
-    if (!(stacks.stack_a = malloc((args_count + 1) * sizeof(int)))
-    || !(stacks.stack_b = malloc((args_count + 1) * sizeof(int))))
+    stacks.c.c_a = 0;
+    stacks.c.c_b = 0;
+    parse_type = check_args(&stacks.c.c_a, argc, argv);
+
+    if (!(stacks.stack_a = malloc((stacks.c.c_a + 1) * sizeof(int)))
+    	|| !(stacks.stack_b = malloc((stacks.c.c_a + 1) * sizeof(int))))
         ft_error("Something went wrong.");
 
-    fill_stacks(&stacks, parse_type, args_count, argv);
-	swap(stacks.stack_a);
-    push('b', &stacks, args_count);
-    rotate(stacks.stack_a, args_count);
-	printf_stacks(stacks, args_count);
+    fill_stacks(&stacks, parse_type, stacks.c.c_a, argv);
+	// swap(stacks.stack_a);
+    // push('b', &stacks, stacks.c.c_a);
+    // rot(stacks.stack_a, stacks.c.c_a);
+	// r_rot(stacks.stack_a, stacks.c.c_a);
+	// printf_stacks(stacks, (stacks.c.c_a + stacks.c.c_b));
+	sort(stacks);
     return (0);
 }

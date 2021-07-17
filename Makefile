@@ -11,6 +11,7 @@ PS_FILES = main.c \
 			source/step_actions.c \
 			source/error.c \
 			source/utils.c \
+			source/sorting.c \
 
 RM = rm -rf
 # PS_OBJS = ${PS_FILES:.c=.o}

@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-void ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
     while (*str)
     {
@@ -9,20 +9,25 @@ void ft_putstr(char *str)
     }
 }
 
-void printf_stacks(t_stacks stacks, int args_count)
+void	printf_stacks(t_stacks stacks, int args_count)
 {
     int i = 0;
 
+	printf("args count - %d\n", args_count);
     while (i < args_count)
     {
-        printf("%d  %d\n", stacks.stack_a[i], stacks.stack_b[i]);
+		if (stacks.c.c_a > i)
+        	printf("%d", stacks.stack_a[i]);
+		if (stacks.c.c_b > i)
+        	printf("  %d", stacks.stack_b[i]);
+		printf("\n");
         ++i;
     }
     printf("-  -\n");
     printf("a  b\n");
 }
 
-void shift_up(int *stack, int args_count)
+void	shift_up(int *stack, int args_count)
 {
     int i = 0;
 
@@ -33,13 +38,13 @@ void shift_up(int *stack, int args_count)
     }
 }
 
-void shift_down(int *stack, int args_count)
+void	shift_down(int *stack, int args_count)
 {
-    int i = 1;
+    int i = args_count;
 
-    while (i < args_count)
+    while (i > 0)
     {
         stack[i] = stack[i - 1];
-        ++i;
+        --i;
     }
 }
