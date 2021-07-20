@@ -25,15 +25,18 @@ int back_fill(t_stacks *stacks)
 
 int to_b(t_stacks *stacks)
 {
-	
+	return 0;
 }
 
 void	sort(t_stacks stacks)
 {
-	if (stacks.c.c_a <= 5)
-		max_five();
-	else if (stacks.c.c_a < 100)
-		max_hundred();
-	else 
-		mad_max();
+	if (!check_stack(stacks))
+	{
+		if (stacks.c.c_a <= 5)
+			max_five(stacks);
+		// else if (stacks.c.c_a < 100)
+			// max_hundred();
+		// else 
+			// mad_max();
+	}
 }

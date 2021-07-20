@@ -12,6 +12,9 @@ PS_FILES = main.c \
 			source/error.c \
 			source/utils.c \
 			source/sorting.c \
+			source/max_five.c \
+			source/max_hundred.c \
+			source/mad_max.c \
 
 RM = rm -rf
 # PS_OBJS = ${PS_FILES:.c=.o}

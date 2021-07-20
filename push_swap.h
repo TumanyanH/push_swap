@@ -35,6 +35,9 @@ void 		printf_stacks(t_stacks stacks, int args_count);
 void 		shift_up(int *stack, int args_count);
 void 		shift_down(int *stack, int args_count);
 
+int 		max_five(t_stacks stacks);
+int 		check_stack(t_stacks stacks);
+
 void 		swap(char s, int *stack);
 void 		push(char stack, t_stacks *stacks, int ac);
 void 		rot(char s, int *stack, int ac);

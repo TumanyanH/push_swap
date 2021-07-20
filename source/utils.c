@@ -48,3 +48,19 @@ void	shift_down(int *stack, int args_count)
         --i;
     }
 }
+
+int check_stack(t_stacks stacks)
+{
+	int temp;
+	int i = 0;
+
+	temp = stacks.stack_a[i];
+	while (i < stacks.c.c_a)
+	{
+		if (temp > stacks.stack_a[i])
+			return (0);
+		temp = stacks.stack_a[i];
+		++i;
+	}
+	return (1);
+}
