@@ -34,13 +34,12 @@ int check_all_num(int *args_count, char *arg)
     {
         if (CHECK_ALLOWED_CHARS(arg[i]))
             ft_error("Error, non-digits detected");
-        while (arg[i] && ft_isdigit(arg[i]))
+        while (arg[i] && (ft_isdigit(arg[i]) || arg[i] == '-'))
         {
             num += ((arg[i + 1] == ' ') ? 1 : 10) * (arg[i] - '0');
-            (*args_count)++;
             ++i;
         }
-        
+            (*args_count)++;
         if (CHECK_ALLOWED_CHARS(arg[i]) && arg[i])
             ft_error("Error, non-digits detected");
         else if (arg[i])

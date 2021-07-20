@@ -3,7 +3,6 @@
 void fill_from_2d(int *stack, int ac, char **args)
 {
     int i = 0;
-
     while (i < ac)
     {
         stack[i] = ft_atoi(args[i]);

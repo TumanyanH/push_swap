@@ -14,11 +14,7 @@ int main(int argc, char **argv)
         ft_error("Something went wrong.");
 
     fill_stacks(&stacks, parse_type, stacks.c.c_a, argv);
-	// swap(stacks.stack_a);
-    // push('b', &stacks, stacks.c.c_a);
-    // rot(stacks.stack_a, stacks.c.c_a);
-	// r_rot(stacks.stack_a, stacks.c.c_a);
-	// printf_stacks(stacks, (stacks.c.c_a + stacks.c.c_b));
 	sort(stacks);
+	printf_stacks(stacks, (stacks.c.c_a + stacks.c.c_b));
     return (0);
 }
