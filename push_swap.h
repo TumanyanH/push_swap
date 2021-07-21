@@ -31,12 +31,14 @@ int 		ft_error(char *text);
 void 		ft_putstr(char *str);
 t_stack 	*addToList(t_stack last, int new_num);
 void 		fill_stacks(t_stacks *stacks, int pt, int ac, char **argv);
-void 		printf_stacks(t_stacks stacks, int args_count);
+void 		printf_stacks(t_stacks *stacks, int args_count);
 void 		shift_up(int *stack, int args_count);
 void 		shift_down(int *stack, int args_count);
 
-int 		max_five(t_stacks stacks);
+int 		max_five(t_stacks *stacks);
 int 		check_stack(t_stacks stacks);
+int			find_min_nu_ind(char s_t, t_stacks *stacks);
+int			find_high_ind(char s_t, t_stacks *stacks);
 
 void 		swap(char s, int *stack);
 void 		push(char stack, t_stacks *stacks, int ac);

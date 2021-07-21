@@ -1,40 +1,71 @@
 #include "../push_swap.h"
 
-int find_high_ind(t_stacks stacks)
+int		find_high_ind(char s_t, t_stacks *stacks)
 {
-	int i;
-	int temp;
+	int count = (s_t == 'a') ? stacks->c.c_a : stacks->c.c_b;
+	int *stack = (s_t == 'a') ? stacks->stack_a : stacks->stack_b;
+	int i = 0;
+	int temp = 0;
 
-	temp = 0;
-	while (i < stacks.c.c_a)
+	while (i < count)
 	{
-		if (stacks.stack_a[temp] < stacks.stack_a[i])
+		if (stack[temp] < stack[i])
 			temp = i;
 		++i;
 	}
 	return (temp);
 }
 
-int max_five(t_stacks stacks)
+int max_five(t_stacks *stacks)
 {
 	int index;
 	int i = 0;
 	int j = 0;
+	int min, mid = 0, max;
 
-	while (i < stacks.c.c_a)
+	if (stacks->c.c_a == 2)
 	{
-		j = 0;
-		index = find_high_ind(stacks);
-		if (index == 1)
-			swap('a', stacks.stack_a);
-		else
-			while (j < stacks.c.c_a - index)
-			{
-				r_rot('a', stacks.stack_a, stacks.c.c_a);
-				++j;
-			}
-		if (check_stack(stacks))
-			return (1);
+		if (stacks->stack_a[0] > stacks->stack_a[1])
+			swap('a', stacks->stack_a);
+		return (0);
 	}
-    return (0);
+	while (stacks->c.c_a > 3)
+	{
+		min = find_min_nu_ind('a', stacks);
+		if (stacks->c.c_a / 2 > min)
+			while (i < min)
+			{
+				rot('a', stacks->stack_a, stacks->c.c_a);
+				++i;
+			}
+		else
+			while (i < stacks->c.c_a - min)
+			{
+				r_rot('a', stacks->stack_a, stacks->c.c_a);
+				++i;
+			}
+		push('b', stacks, stacks->c.c_b);
+		i = 0;
+	}
+	min = find_min_nu_ind('a', stacks);
+	max = find_high_ind('a', stacks);
+	while (min == mid || max == mid)
+		++mid;
+	if (min == 1 && mid == 0)
+		swap('a', stacks->stack_a);
+	else if (max == 1 && min == 2)
+		r_rot('a', stacks->stack_a, stacks->c.c_a);
+	else if (max == 1 && min == 0)
+	{
+		swap('a', stacks->stack_a);
+		rot('a', stacks->stack_a, stacks->c.c_a);
+	}
+	else if (max == 0 && min == 1)
+		rot('a', stacks->stack_a, stacks->c.c_a);
+	else if (max == 0 && min == 2)
+	{
+		swap('a', stacks->stack_a);
+		r_rot('a', stacks->stack_a, stacks->c.c_a);
+	}
+	return (0);
 }
