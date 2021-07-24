@@ -32,7 +32,7 @@ int max_five(t_stacks *stacks)
 	while (stacks->c.c_a > 3)
 	{
 		min = find_min_nu_ind('a', stacks);
-		if (stacks->c.c_a / 2 > min)
+		if (stacks->c.c_a / 2 >= min)
 			while (i < min)
 			{
 				rot('a', stacks->stack_a, stacks->c.c_a);

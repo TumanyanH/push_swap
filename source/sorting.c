@@ -34,10 +34,10 @@ void	sort(t_stacks stacks)
 	{
 		if (stacks.c.c_a <= 5)
 			max_five(&stacks);
-		// else if (stacks.c.c_a < 100)
-			// max_hundred();
+		else if (stacks.c.c_a < 100)
+			max_hundred(&stacks);
 		// else 
 			// mad_max();
+		back_fill(&stacks);
 	}
-	back_fill(&stacks);
 }

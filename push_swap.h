@@ -36,6 +36,7 @@ void 		shift_up(int *stack, int args_count);
 void 		shift_down(int *stack, int args_count);
 
 int 		max_five(t_stacks *stacks);
+int			max_hundred(t_stacks *stacks);
 int 		check_stack(t_stacks stacks);
 int			find_min_nu_ind(char s_t, t_stacks *stacks);
 int			find_high_ind(char s_t, t_stacks *stacks);
