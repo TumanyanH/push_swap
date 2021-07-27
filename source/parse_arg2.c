@@ -1,11 +1,11 @@
 #include "../push_swap.h"
 
-void fill_from_2d(int *stack, int ac, char **args)
+void fill_from_2d(t_stack *stack, int ac, char **args)
 {
     int i = 0;
     while (i < ac)
     {
-        stack[i] = ft_atoi(args[i]);
+        stack[i].num = ft_atoi(args[i]);
         ++i;
     }
 }
@@ -21,7 +21,7 @@ int double_check(t_stacks *stacks)
 		j = i + 1;
 		while (j < stacks->c.c_a)
 		{
-			if (stacks->stack_a[i] == stacks->stack_a[j])
+			if (stacks->stack_a[i].num == stacks->stack_a[j].num)
 				return (0);
 			++j;
 		}

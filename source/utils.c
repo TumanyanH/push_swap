@@ -17,9 +17,9 @@ void	printf_stacks(t_stacks *stacks, int args_count)
     while (i < args_count)
     {
 		if (stacks->c.c_a > i)
-        	printf("%d", stacks->stack_a[i]);
+        	printf("%d", stacks->stack_a[i].num);
 		if (stacks->c.c_b > i)
-        	printf("  %d", stacks->stack_b[i]);
+        	printf("  %d", stacks->stack_b[i].num);
 		printf("\n");
         ++i;
     }
@@ -27,7 +27,7 @@ void	printf_stacks(t_stacks *stacks, int args_count)
     printf("a  b\n");
 }
 
-void	shift_up(int *stack, int args_count)
+void	shift_up(t_stack *stack, int args_count)
 {
     int i = 0;
 
@@ -38,7 +38,7 @@ void	shift_up(int *stack, int args_count)
     }
 }
 
-void	shift_down(int *stack, int args_count)
+void	shift_down(t_stack *stack, int args_count)
 {
     int i = args_count;
 
@@ -51,13 +51,13 @@ void	shift_down(int *stack, int args_count)
 
 int check_stack(t_stacks stacks)
 {
-	int temp;
+	t_stack temp;
 	int i = 0;
 
 	temp = stacks.stack_a[i];
 	while (i < stacks.c.c_a)
 	{
-		if (temp > stacks.stack_a[i])
+		if (temp.num > stacks.stack_a[i].num)
 			return (0);
 		temp = stacks.stack_a[i];
 		++i;

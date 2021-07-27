@@ -10,7 +10,9 @@
 typedef struct s_stack
 {
     int num;
-    struct s_stack *next;
+    int index;
+	int mark;
+	int check;
 } t_stack;
 
 typedef struct s_c {
@@ -20,8 +22,8 @@ typedef struct s_c {
 
 typedef struct s_stacks {
 	t_c c;
-    int *stack_a;
-    int *stack_b;
+    t_stack *stack_a;
+    t_stack *stack_b;
 } t_stacks;
 
 int 		check_all_num(int *args_count, char *arg);
@@ -32,8 +34,8 @@ void 		ft_putstr(char *str);
 t_stack 	*addToList(t_stack last, int new_num);
 void 		fill_stacks(t_stacks *stacks, int pt, int ac, char **argv);
 void 		printf_stacks(t_stacks *stacks, int args_count);
-void 		shift_up(int *stack, int args_count);
-void 		shift_down(int *stack, int args_count);
+void 		shift_up(t_stack *stack, int args_count);
+void 		shift_down(t_stack *stack, int args_count);
 
 int 		max_five(t_stacks *stacks);
 int			max_hundred(t_stacks *stacks);
@@ -41,10 +43,10 @@ int 		check_stack(t_stacks stacks);
 int			find_min_nu_ind(char s_t, t_stacks *stacks);
 int			find_high_ind(char s_t, t_stacks *stacks);
 
-void 		swap(char s, int *stack);
+void 		swap(char s, t_stack *stack);
 void 		push(char stack, t_stacks *stacks, int ac);
-void 		rot(char s, int *stack, int ac);
-void		r_rot(char s, int *stack, int ac);
+void 		rot(char s, t_stack *stack, int ac);
+void		r_rot(char s, t_stack *stack, int ac);
 void		ss(t_stacks stacks);
 void		rr(t_stacks stacks);
 void		rrr(t_stacks stacks);
