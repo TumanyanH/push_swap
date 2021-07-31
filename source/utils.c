@@ -17,9 +17,9 @@ void	printf_stacks(t_stacks *stacks, int args_count)
     while (i < args_count)
     {
 		if (stacks->c.c_a > i)
-        	printf("%d", stacks->stack_a[i].num);
+        	printf("%d", stacks->stack_a[i].index);
 		if (stacks->c.c_b > i)
-        	printf("  %d", stacks->stack_b[i].num);
+        	printf("  %d", stacks->stack_b[i].index);
 		printf("\n");
         ++i;
     }

@@ -9,19 +9,14 @@ int find_min_nu_ind_new(t_stacks *stacks)
 	
 	while (i < stacks->c.c_a)
 	{
-		// printf("check - %d\n", (stacks->stack_a[i].check));
 		if (stacks->stack_a[i].check == 0)
 		{
 			if (stacks->stack_a[temp].num > stacks->stack_a[i].num
 				&& stacks->stack_a[i].check != 1)
-			{
-				// printf("depq - %d\n", i);
 				temp = i;
-			}
 		}
 			++i;
 	}
-	printf("t - %d\n", temp);
 	return (temp);
 }
 
@@ -42,20 +37,31 @@ void indexing(t_stacks *stacks)
 	}
 }
 
-void sort_chunck()
+void sort_chunck(t_stacks *stacks, int chunck_num)
 {
-	
+	int i = chunck_num * 20;
+
+	while (i < (chunck_num * 20 + 20))
+	{
+		
+		++i;
+	}
 }
 
 int max_hundred(t_stacks *stacks)
 {
 	int i = 1;
-	int chuncks_count = stacks->c.c_a / 20 + 1;
+	int chuncks_count = stacks->c.c_a / 20;
+
+	if (chuncks_count * 20 != stacks->c.c_a)
+		chuncks_count += 1;
 
 	indexing(stacks);
-	while (i < chuncks_count + 1)
+
+	printf("chunks -> %d\n", chuncks_count);
+	while (i <= chuncks_count)
 	{
-		sort_chunck(i);
+		sort_chunck(stacks, i);
 		++i;
 	}
 	
