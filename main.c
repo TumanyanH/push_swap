@@ -15,6 +15,6 @@ int main(int argc, char **argv)
 
     fill_stacks(&stacks, parse_type, stacks.c.c_a, argv);
 	sort(stacks);
-	printf_stacks(&stacks, (stacks.c.c_a + stacks.c.c_b));
+	// printf_stacks(&stacks, (stacks.c.c_a + stacks.c.c_b));
     return (0);
 }
