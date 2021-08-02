@@ -21,6 +21,7 @@ typedef struct s_c {
 } t_c;
 
 typedef struct s_stacks {
+	int ch_s;
 	t_c c;
     t_stack *stack_a;
     t_stack *stack_b;
@@ -28,7 +29,7 @@ typedef struct s_stacks {
 
 int 		check_all_num(int *args_count, char *arg);
 int 		check_all_num_2d(int *args_count, char **arg);
-int 		check_args(int *args_count, char argc, char **args);
+int 		check_args(int *args_count, int argc, char **args);
 int 		ft_error(char *text);
 void 		ft_putstr(char *str);
 t_stack 	*addToList(t_stack last, int new_num);
@@ -38,7 +39,7 @@ void 		shift_up(t_stack *stack, int args_count);
 void 		shift_down(t_stack *stack, int args_count);
 
 int 		max_five(t_stacks *stacks);
-int			max_hundred(t_stacks *stacks);
+int 		max_hundred(t_stacks *stacks, int ch_s);
 int 		check_stack(t_stacks stacks);
 int			find_min_nu_ind(char s_t, t_stacks *stacks);
 int			find_high_ind(char s_t, t_stacks *stacks);

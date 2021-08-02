@@ -40,3 +40,5 @@ push :
 	git add .
 	git commit -m "some message"
 	git push
+
+# ARG=`ruby -e "puts (0..99).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l

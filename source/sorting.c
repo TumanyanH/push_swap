@@ -35,8 +35,9 @@ void	sort(t_stacks stacks)
 		if (stacks.c.c_a <= 5)
 			max_five(&stacks);
 		else if(stacks.c.c_a <= 100)
-			max_hundred(&stacks);
-			
+			max_hundred(&stacks, 20);
+		else
+			max_hundred(&stacks, 50);
 		back_fill(&stacks);
 	}
 }

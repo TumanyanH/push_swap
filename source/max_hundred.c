@@ -37,10 +37,10 @@ void indexing(t_stacks *stacks)
 	}
 }
 
-int in_chunck(int index, int chunck_num)
+int in_chunck(int index, int chunck_num, int ch_s)
 {
-	return (index >= chunck_num * 20 
-			&& index < chunck_num * 20 + 20);
+	return (index >= chunck_num * ch_s 
+			&& index < chunck_num * ch_s + ch_s);
 }
 
 int find_nearest(t_stacks *stacks, int chunck_num)
@@ -51,7 +51,7 @@ int find_nearest(t_stacks *stacks, int chunck_num)
 
 	while (i < stacks->c.c_a)
 	{
-		if (in_chunck(stacks->stack_a[i].index, chunck_num))
+		if (in_chunck(stacks->stack_a[i].index, chunck_num, stacks->ch_s))
 		{
 			temp2 = i;
 			if (temp1 == -1)
@@ -67,22 +67,22 @@ int find_nearest(t_stacks *stacks, int chunck_num)
 
 void sort_chunck(t_stacks *stacks, int chunck_num)
 {
-	int chunck_start = chunck_num * 20;
+	int chunck_start = chunck_num * stacks->ch_s;
 	int i = 0;
 	int side = find_nearest(stacks, chunck_num);
 
 	while (i < stacks->c.c_a)
 	{
-		if (stacks->c.c_b == 20)
+		if (stacks->c.c_b == stacks->ch_s)
 			break;
-		if (in_chunck(stacks->stack_a[0].index, chunck_num))
+		if (in_chunck(stacks->stack_a[0].index, chunck_num, stacks->ch_s))
 			push('b', stacks, stacks->c.c_b);
 		else
 		{
-			if (side == 1)
+			// if (side == 1)
 				rot('a', stacks->stack_a, stacks->c.c_a);
-			else
-				r_rot('a', stacks->stack_a, stacks->c.c_a);
+			// else
+				// r_rot('a', stacks->stack_a, stacks->c.c_a);
 			++i;
 		}
 	}
@@ -116,30 +116,39 @@ void	sort_b(t_stacks *stacks, int chunck_num)
 	}
 }
 
-int max_hundred(t_stacks *stacks)
+void	ratating(t_stacks *stacks, int chunck_num)
+{
+	int i = 0;
+
+	if (chunck_num != 0)
+	{
+		while (i < stacks->ch_s)
+		{
+			if ((stacks->stack_a[0].index + 1) != stacks->stack_a[1].index)
+				break;
+			rot('a', stacks->stack_a, stacks->c.c_a);
+			++i;
+		}
+		
+	}
+}
+
+int max_hundred(t_stacks *stacks, int ch_s)
 {
 	int i = 0, x;
-	int chuncks_count = stacks->c.c_a / 20;
+	int chuncks_count = stacks->c.c_a / ch_s;
 
-	if (chuncks_count * 20 != stacks->c.c_a)
+	stacks->ch_s = ch_s;
+	if (chuncks_count * stacks->ch_s != stacks->c.c_a)
 		chuncks_count += 1;
-
 	indexing(stacks);
-	// printf_stacks(stacks, (stacks->c.c_a + stacks->c.c_b));
-	// printf("1chunks -> %d\n", chuncks_count);
-	while (i < chuncks_count)
+	while (chuncks_count >= 0)
 	{
-		sort_chunck(stacks, i);
-		sort_b(stacks, i);
-		// x = 0;
-		// while (x < 20)
-		// {
-		// 	rot('a', stacks->stack_a, stacks->c.c_a);
-		// 	++x;
-		// }
-		++i;
+		ratating(stacks, chuncks_count);
+		sort_chunck(stacks, chuncks_count);
+		sort_b(stacks, chuncks_count);
+		--chuncks_count;
 	}
 	// printf_stacks(stacks, (stacks->c.c_a + stacks->c.c_b));
-	
     return (0);
 }
