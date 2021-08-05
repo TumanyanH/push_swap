@@ -40,6 +40,7 @@ void 		shift_down(t_stack *stack, int args_count);
 
 int 		max_five(t_stacks *stacks);
 int 		max_hundred(t_stacks *stacks, int ch_s);
+int 		mad_max(t_stacks *stacks);
 int 		check_stack(t_stacks stacks);
 int			find_min_nu_ind(char s_t, t_stacks *stacks);
 int			find_high_ind(char s_t, t_stacks *stacks);

@@ -116,23 +116,6 @@ void	sort_b(t_stacks *stacks, int chunck_num)
 	}
 }
 
-void	ratating(t_stacks *stacks, int chunck_num)
-{
-	int i = 0;
-
-	if (chunck_num != 0)
-	{
-		while (i < stacks->ch_s)
-		{
-			if ((stacks->stack_a[0].index + 1) != stacks->stack_a[1].index)
-				break;
-			rot('a', stacks->stack_a, stacks->c.c_a);
-			++i;
-		}
-		
-	}
-}
-
 int max_hundred(t_stacks *stacks, int ch_s)
 {
 	int i = 0, x;
@@ -144,7 +127,6 @@ int max_hundred(t_stacks *stacks, int ch_s)
 	indexing(stacks);
 	while (chuncks_count >= 0)
 	{
-		ratating(stacks, chuncks_count);
 		sort_chunck(stacks, chuncks_count);
 		sort_b(stacks, chuncks_count);
 		--chuncks_count;

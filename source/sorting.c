@@ -37,7 +37,7 @@ void	sort(t_stacks stacks)
 		else if(stacks.c.c_a <= 100)
 			max_hundred(&stacks, 20);
 		else
-			max_hundred(&stacks, 50);
+			mad_max(&stacks);
 		back_fill(&stacks);
 	}
 }
