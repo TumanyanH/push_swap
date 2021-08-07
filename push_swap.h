@@ -35,6 +35,7 @@ void 		ft_putstr(char *str);
 t_stack 	*addToList(t_stack last, int new_num);
 void 		fill_stacks(t_stacks *stacks, int pt, int ac, char **argv);
 void 		printf_stacks(t_stacks *stacks, int args_count);
+void		printf_idex(t_stacks *stacks, int args_count);
 void 		shift_up(t_stack *stack, int args_count);
 void 		shift_down(t_stack *stack, int args_count);
 
@@ -44,6 +45,9 @@ int 		mad_max(t_stacks *stacks);
 int 		check_stack(t_stacks stacks);
 int			find_min_nu_ind(char s_t, t_stacks *stacks);
 int			find_high_ind(char s_t, t_stacks *stacks);
+
+void 		indexing(t_stacks *stacks);
+int			find_min_nu_ind(char s_t, t_stacks *stacks);
 
 void 		swap(char s, t_stack *stack);
 void 		push(char stack, t_stacks *stacks, int ac);
