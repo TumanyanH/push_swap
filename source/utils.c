@@ -27,7 +27,7 @@ void	printf_stacks(t_stacks *stacks, int args_count)
     printf("a  b\n");
 }
 
-void	printf_idex(t_stacks *stacks, int args_count)
+void	printf_index(t_stacks *stacks, int args_count)
 {
     int i = 0;
 

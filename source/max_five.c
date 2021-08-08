@@ -44,7 +44,7 @@ int max_five(t_stacks *stacks)
 				r_rot('a', stacks->stack_a, stacks->c.c_a);
 				++i;
 			}
-		push('b', stacks, stacks->c.c_b);
+		push('b', stacks);
 		i = 0;
 	}
 	min = find_min_nu_ind('a', stacks);
@@ -67,5 +67,6 @@ int max_five(t_stacks *stacks)
 		swap('a', stacks->stack_a);
 		r_rot('a', stacks->stack_a, stacks->c.c_a);
 	}
+	back_fill(stacks);
 	return (0);
 }

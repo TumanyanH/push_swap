@@ -19,13 +19,8 @@ int		find_min_nu_ind(char s_t, t_stacks *stacks)
 int back_fill(t_stacks *stacks)
 {
 	while (stacks->c.c_b > 0)
-		push('a', stacks, stacks->c.c_b);
+		push('a', stacks);
 	return (0);
-}
-
-int to_b(t_stacks *stacks)
-{
-	return 0;
 }
 
 void	sort(t_stacks stacks)
@@ -35,10 +30,8 @@ void	sort(t_stacks stacks)
 		if (stacks.c.c_a <= 5)
 			max_five(&stacks);
 		else if(stacks.c.c_a <= 100)
-			mad_max(&stacks);
-			// max_hundred(&stacks, 20);
+			mad_max(&stacks, 20);
 		else
-			mad_max(&stacks);
-		back_fill(&stacks);
+			mad_max(&stacks, 45);
 	}
 }

@@ -12,7 +12,7 @@ void	swap(char s, t_stack *stack)
 	ft_putchar_fd('\n', 1);
 }
 
-void	push(char stack, t_stacks *stacks, int ac)
+void	push(char stack, t_stacks *stacks)
 {
     if (stack == 'a')
     {
